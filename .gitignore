@@ -12,6 +12,7 @@
 .env.yaml
 
 .git/
+.idea/
 
 # Ignore all logfiles and tempfiles.
 /log/*
