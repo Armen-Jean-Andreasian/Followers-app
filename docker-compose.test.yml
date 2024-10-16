@@ -3,11 +3,11 @@ services:
   db:
     image: postgres:14
     environment:
-      POSTGRES_USER: myusertest
-      POSTGRES_PASSWORD: mypasswordtest
-      POSTGRES_DB: mydb_test
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB:  ${POSTGRES_DB}
     ports:
-      - "5433:5432"
+      - "${POSTGRES_PORT_MAIN}:${POSTGRES_PORT_SUBSTITUTE}"
     volumes:
       - db-data:/var/lib/postgresql/data
 volumes:
