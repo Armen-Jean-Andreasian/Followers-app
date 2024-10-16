@@ -7,9 +7,10 @@
 # Ignore bundler config.
 /.bundle
 
-# Ignore all environment files.
-/.env*
-.env.yaml
+# Ignore environment files.
+.env.development
+.env.production
+.env.test
 
 .git/
 .idea/

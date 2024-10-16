@@ -1,3 +1,5 @@
+# On start
+
 ## 1. Set `master.key` file
 
 ---
@@ -47,3 +49,11 @@ ruby -r './env_retriever.rb' -e 'EnvRetriever.decrypt_files'
 >    ```
 
 ---
+
+# On end
+
+If new `.env` files, or other `secrets` files were added, include them to `env_retriever.rb` and run:
+```bash
+ruby -r './env_retriever.rb' -e 'EnvRetriever.decrypt_files'
+```
+To encrypt new files/changes and have them up to date.
