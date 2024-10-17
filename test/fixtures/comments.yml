@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  commenter: one
+  commented_to: one
+  commented_to_type: Commented to
+  created_at: 2024-10-17 22:45:32
+
+two:
+  commenter: two
+  commented_to: two
+  commented_to_type: Commented to
+  created_at: 2024-10-17 22:45:32

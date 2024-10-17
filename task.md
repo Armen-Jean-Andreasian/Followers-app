@@ -1,24 +1,29 @@
-# README
+[DONE]
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+It is necessary to create a web application using:
+- Ruby on Rails 7 framework. 
+- Database: PostgreSQL or MariaDB. Users can register. 
+- For user management, use the Devise 4.9 library.
 
-Things you may want to cover:
+[TODO]
 
-* Ruby version
+Users can _create text **posts**_, _**follow** each other_, and _read posts_ from those they follow in _**chronological**_ order in a feed.
 
-* System dependencies
+Users can comment on each other's posts. Comments form a tree structure—_**each comment relates either to the original post or to another comment**_.
 
-* Configuration
+---
 
-* Database creation
+Post
+- creator: reference User 
+- body:text
+- created_at
 
-* Database initialization
+Comment
+- commenter: reference User
+- commented_to: reference Comment | Post
+- created_at
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Subscriptions
+- user: reference User
+- follows: reference User (many)
+- followers: reference User (many)

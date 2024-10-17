@@ -10,9 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_10_14_074707) do
+ActiveRecord::Schema[8.0].define(version: 2024_10_17_154605) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.bigint "commenter_id", null: false
+    t.string "commented_to_type", null: false
+    t.bigint "commented_to_id", null: false
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commented_to_type", "commented_to_id"], name: "index_comments_on_commented_to"
+    t.index ["commenter_id"], name: "index_comments_on_commenter_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.bigint "creator_id", null: false
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["creator_id"], name: "index_posts_on_creator_id"
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "follows", default: [], array: true
+    t.integer "subscribers", default: [], array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -25,4 +53,8 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_14_074707) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  add_foreign_key "comments", "users", column: "commenter_id"
+  add_foreign_key "posts", "users", column: "creator_id"
+  add_foreign_key "subscriptions", "users"
 end
