@@ -1,0 +1,19 @@
+Post
+    creator: relation User
+
+Comment
+    commenter: relation User
+    commented_on: relation Post or other Comment
+
+Subscriptions
+    subscriber : User
+    subscribed_to : User (multiple)
+
+
+rails generate scaffold Post creator:references body:text
+
+rails generate scaffold Comment commenter:references body:text commented_on:references
+
+rails generate scaffold Subscription subscriber:references subscribed_to:references
+
+
