@@ -6,8 +6,9 @@ Comment
     commented_on: relation Post or other Comment
 
 Subscriptions
-    subscriber : User
-    subscribed_to : User (multiple)
+    user_id: User
+    follows : User (multiple)
+    followed_by : User (multiple)
 
 
 rails generate scaffold Post creator:references body:text
